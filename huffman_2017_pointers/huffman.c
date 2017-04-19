@@ -132,9 +132,9 @@ void printCodeTable(unsigned long int codeTable[], int length){
     }
 }
 
-int getBit(int c, int bitIndex){
+int getBit(int c, int bitIndex, int length){
 
-    int mask = pow(2, 8-1-bitIndex);
+    int mask = pow(2, length-1-bitIndex);
     int v = c & mask;
     if(v > 0){
         return 1;
@@ -155,8 +155,8 @@ void compress(FILE *input, FILE *output, unsigned long int codeTable[]){
         int cSize = len(c);
 
         int bitIndex;
-        for(bitIndex=8-cSize; bitIndex<8; bitIndex++){
-            int bit = getBit(c, bitIndex);
+        for(bitIndex=0; bitIndex<cSize; bitIndex++){
+            int bit = getBit(c, bitIndex, cSize);
 
             chunk = chunk << 1;
             chunk = chunk | bit;
@@ -222,7 +222,7 @@ void decompress(FILE * input, FILE * output, struct NODE *root){
                 skipNext = 0;
                 continue;
             }
-            int bit = getBit(c, i);
+            int bit = getBit(c, i, 8);
 
             if(bit == 0){
                 node = node->left;

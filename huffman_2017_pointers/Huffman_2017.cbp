@@ -16,6 +16,10 @@
 				</Compiler>
 			</Target>
 		</Build>
+		<Unit filename="crc.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="crc.h" />
 		<Unit filename="huffman.c">
 			<Option compilerVar="CC" />
 		</Unit>
