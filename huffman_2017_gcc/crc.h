@@ -15,4 +15,6 @@ void appendCrcToFile(char * outputWithCrc, int crcSizeInBytes, unsigned char crc
 
 unsigned char * calulateRest(char *fileName);
 
+int isIntegral(unsigned char rest[], int restSize);
+
 #endif // CRC_H_INCLUDED

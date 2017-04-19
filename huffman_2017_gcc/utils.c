@@ -72,13 +72,13 @@ void copyFile(char *from, char *to)
         fputc(c, output);
     }while(1);
 
-    if(fclose(input) != NULL)
+    if(fclose(input) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);
     }
 
-    if(fclose(output) != NULL)
+    if(fclose(output) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);
@@ -126,13 +126,13 @@ void copySkip(char * inputName, char * outputName, int skipBytes)
         fputc(c, output);
     }
 
-    if(fclose(input) != NULL)
+    if(fclose(input) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);
     }
 
-    if(fclose(output) != NULL)
+    if(fclose(output) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);

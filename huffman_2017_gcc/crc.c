@@ -172,7 +172,7 @@ unsigned char * calculateCrc(char *fileName)
     genPolynomial[3]=0x0b; //1011
 
     int bytesCount = dzielenie(fileName, restPolynomial, genPolynomial);
-    //printf("Signed %d bytes\n", bytesCount);
+    printf("bytesCount = %d\n", bytesCount);
     return restPolynomial;
 }
 
@@ -187,6 +187,7 @@ unsigned char * calulateRest(char *fileName)
     genPolynomial[3]=0x0d; //1011
 
     int bytesCount = divide(fileName, restPolynomial, genPolynomial);
+    printf("bytesCount = %d\n", bytesCount);
     return restPolynomial;
 }
 
@@ -217,7 +218,7 @@ void createCrcFile(char * fileName, int crcSizeInBytes, unsigned char crc[])
         c = crc[i];
         fputc(c, fp);
     }
-    if(fclose(fp) != NULL)
+    if(fclose(fp) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);
@@ -244,7 +245,7 @@ void appendCrcToFile(char * outputWithCrc, int crcSizeInBytes, unsigned char crc
         fputc(c, output);
     }
 
-    if(fclose(output) != NULL)
+    if(fclose(output) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);
@@ -288,13 +289,13 @@ void appendCrcToFile2(char * inputWithZeroes, char * outputWithCrc, int crcSizeI
         c = crc[i];
         fputc(c, output);
     }
-    if(fclose(input) != NULL)
+    if(fclose(input) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);
     }
 
-    if(fclose(output) != NULL)
+    if(fclose(output) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);
@@ -306,7 +307,7 @@ int isIntegral(unsigned char rest[], int restSize){
     int i=0;
     for(i=0; i<restSize; i++){
         if(rest[i] != 0){
-            printf("Integrity check failed");
+//            printf("Integrity check failed");
             return 0;
         }
     }

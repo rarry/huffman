@@ -8,7 +8,7 @@
 
 
 
-struct NODE * buildHuffmanTree(struct NODE heap[], int heapSize){
+struct NODE * buildHuffmanTree(struct NODE *heap[], int heapSize){
 
     struct NODE *newParent;
     while(heapSize > 2){
@@ -171,7 +171,7 @@ void compress(FILE *input, FILE *output, unsigned long int codeTable[]){
     }
 
     if(chunkSize >0){
-        chunk = chunk << 8-chunkSize;
+        chunk = chunk << (8-chunkSize);
         fputc(chunk, output);
     }
 }
@@ -196,13 +196,13 @@ void compressFile(char *inputFileName, char * outputFileName, unsigned long int 
 
     compress(input, output, codeTable);
 
-    if(fclose(input) != NULL)
+    if(fclose(input) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);
     }
 
-    if(fclose(output) != NULL)
+    if(fclose(output) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);
@@ -260,13 +260,13 @@ void decompressFile(char *inputFileName, char * outputFileName, struct NODE *roo
 
     decompress(input, output, root);
 
-    if(fclose(input) != NULL)
+    if(fclose(input) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);
     }
 
-    if(fclose(output) != NULL)
+    if(fclose(output) != 0)
     {
         perror("fclose");
         exit(EXIT_FAILURE);

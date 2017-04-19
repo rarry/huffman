@@ -15,7 +15,7 @@ struct CODE_WORD {
     unsigned char *word;
 };
 
-struct NODE * buildHuffmanTree(struct NODE heap[], int heapSize);
+struct NODE * buildHuffmanTree(struct NODE *heap[], int heapSize);
 
 void printHuffmanTreeBfs(struct NODE *root);
 

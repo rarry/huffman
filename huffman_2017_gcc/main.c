@@ -4,27 +4,28 @@
 #include "huffman.h"
 #include "priorityQueue.h"
 #include "crc.h"
+#include "utils.h"
 
 int main(int argc, char *argv[]) {
 
 	int i;
-//	char * inFp = "C:\\test_huffman\\great\\great.txt";
-//	char * inFpCrc = "C:\\test_huffman\\great\\great_crc.txt";
-//	char * codedFp = "C:\\test_huffman\\great\\great_compressed.txt";
-//	char * decodedFpCrc = "C:\\test_huffman\\great\\great_decompressed_crc.txt";
-//	char * decodedFp = "C:\\test_huffman\\great\\great_decompressed.txt";
+//	char * inFp = "testFiles/great/great.txt";
+//	char * inFpCrc = "testFiles/great/great_crc.txt";
+//	char * codedFp = "testFiles/great/great_compressed.txt";
+//	char * decodedFpCrc = "testFiles/great/great_decompressed_crc.txt";
+//	char * decodedFp = "testFiles/great/great_decompressed.txt";
 
-//    char * inFp = "C:\\test_huffman\\abc.txt";
-//	char * inFpCrc = "C:\\test_huffman\\abc_crc.txt";
-//	char * codedFp = "C:\\test_huffman\\abc_compressed.txt";
-//	char * decodedFpCrc = "C:\\test_huffman\\abc_decompressed_crc.txt";
-//	char * decodedFp = "C:\\test_huffman\\abc_decompressed.txt";
+//	char * inFp = "testFiles/abc/abc.txt";
+//	char * inFpCrc = "testFiles/abc/abc_crc.txt";
+//	char * codedFp = "testFiles/abc/abc_compressed.txt";
+//	char * decodedFpCrc = "testFiles/abc/abc_decompressed_crc.txt";
+//	char * decodedFp = "testFiles/abc/abc_decompressed.txt";
 
-    char * inFp = "C:\\test_huffman\\a\\a.txt";
-	char * inFpCrc = "C:\\test_huffman\\a\\a_crc.txt";
-	char * codedFp = "C:\\test_huffman\\a\\a_compressed.txt";
-	char * decodedFpCrc = "C:\\test_huffman\\a\\a_decompressed_crc.txt";
-	char * decodedFp = "C:\\test_huffman\\a\\a_decompressed.txt";
+	char * inFp = "testFiles/a/a.txt";
+	char * inFpCrc = "testFiles/a/a_crc.txt";
+	char * codedFp = "testFiles/a/a_compressed.txt";
+	char * decodedFpCrc = "testFiles/a/a_decompressed_crc.txt";
+	char * decodedFp = "testFiles/a/a_decompressed.txt";
 
 	int freq[LETTERS_COUNT];
 	struct NODE *heap[LETTERS_COUNT+1];
@@ -71,8 +72,8 @@ int main(int argc, char *argv[]) {
     printf("\n\nRest from decopressed file:\n");
     printPolynomial(restPolyFromDec, SIZECRC);
 
-    if(!isIntegral()){
-        printf("Integrity check failed!");
+    if(!isIntegral(restPolyFromDec, SIZECRC)){
+        printf("Integrity check failed!\n\n");
         exit(EXIT_FAILURE);
     }else{
         printf("Integrity check passed!\n\n");
