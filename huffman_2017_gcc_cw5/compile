@@ -1,0 +1,2 @@
+gcc -Wall *.c -lm -o huffman.o
+
